@@ -104,6 +104,18 @@ app.post('/api/v1/search', (req, res) => {
   res.json(response);
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'CORIDE Backend API is running!', 
+    endpoints: {
+      health: '/api/health',
+      search: '/api/v1/search'
+    },
+    timestamp: new Date().toISOString() 
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
